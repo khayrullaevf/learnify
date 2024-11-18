@@ -4,11 +4,14 @@
   "description": "Node js with express JS",
   "main": "app",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Fazliddin kHayrullaev",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
   }
 }
