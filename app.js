@@ -46,6 +46,28 @@ app.post('/api/v1/movies',(req,res)=>{
 })
 
 
+// Route parametrs
+app.get('/api/v1/movies/:id',(req,res)=>{
+    console.log(req.params);
+    const id=req.params.id*1
+    console.log(id);
+    let movie=movies.find((el)=>el.id===id)
+    if (!movie) {
+       return res.status(404).json({
+            status:"not found",
+            message:"movie ith this id not found"
+        })
+    }
+
+        res.status(200).json({
+            status:"success",
+            movie,
+        })
+    
+    
+    
+    
+})
 
 
 
