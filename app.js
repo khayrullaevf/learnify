@@ -70,7 +70,7 @@ app.get('/api/v1/movies/:id',(req,res)=>{
 })
 
 
-//Patch
+//Patch method
 
 
 
