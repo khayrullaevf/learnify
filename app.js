@@ -35,9 +35,11 @@ app.post('/api/v1/movies',(req,res)=>{
 
     movies.push(newMovie)
    
-    fs.writeFile('./data/data.json',JSON.stringify(movies),(err)=>{
-        res.status(201).send({movie:newMovie})
-     })
+    fs.writeFile('./data/data.json', JSON.stringify(movies),(err)=>{
+        res.status(201).json({
+            newMovie:newMovie
+        })
+    })
    
    
     
