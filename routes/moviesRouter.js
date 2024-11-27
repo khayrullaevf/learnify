@@ -11,14 +11,10 @@ router.param('id',moviesController.checkID)
 
 
 
-const movies=JSON.parse(fs.readFileSync('./data/data.json','utf-8'))
-
-
-
 
 router.route('/')
 .get(moviesController.getAllMovies)
-.post(moviesController.addMovie)
+.post(moviesController.validateBody,moviesController.addMovie)
 
 
 router.route('/:id')

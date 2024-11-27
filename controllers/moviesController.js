@@ -5,9 +5,24 @@ const fs=require('fs')
 
 const movies=JSON.parse(fs.readFileSync('./data/data.json','utf-8'))
 
+
+
+exports.validateBody=(req,res,next)=>{
+    if (!req.body.name) {
+        res.status(400).send({
+            status:'fail',
+            message:'not a valid movie data'
+        })
+    }
+
+}
+
 exports.checkID=(req,res,next,value)=>{
+    let movie=movies.find((el)=>el.id==value)
+ 
     
-    let movie=movies.find((el)=>el.id===value)
+    console.log(movie);
+    
     if (!movie) {
        return res.status(404).json({
             status:"not found",
@@ -81,6 +96,7 @@ exports.updateMovies=(req,res)=>{
 }
 
 exports.deleteMovies=(req,res)=>{
+   console.log(req.params.id);
    
     const id=req.params.id*1
 
@@ -90,10 +106,8 @@ exports.deleteMovies=(req,res)=>{
 
     fs.writeFile('./data/data.json',JSON.stringify(movies),(err)=>{
         res.status(204).send({
-               data:{
-                status:'success',
-                movie:null
-               }
+              status:'success',
+              movie:null
             })
     })
 
